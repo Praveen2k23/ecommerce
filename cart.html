@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Shopee</title>
+
+    <!-- Bootstrap CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- Owl-carousel CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha256-UhQQ4fxEeABh4JrcmAJ1+16id/1dnlOEVCFOxDef9Lw=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha256-kksNxjDRxd/5+jGurZUJd1sdR2v+ClrCl3svESBaJqw=" crossorigin="anonymous" />
+
+    <!-- font awesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
+
+    <!-- Custom CSS file -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="cart-style.css">
+</head>
+<body>
+
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Shopping Cart</title>
+        <link rel="stylesheet" href="cart-css.css">
+    </head>
+    <body>
+        <div class="container">
+            <h1 class="cart-header">Your Cart</h1>
+            
+            <div class="cart-grid">
+                <!-- Cart items will be dynamically inserted here -->
+                <div class="cart-items">
+                    <!-- Dynamic content goes here -->
+                </div>
+                
+                <div class="checkout-panel">
+                    <textarea class="special-instructions" placeholder="Order special instructions"></textarea>
+                    
+                    <div class="cart-summary">
+                        <div class="subtotal">
+                            <span>Subtotal:</span>
+                            <span id="subtotal">Rs 0.00</span>
+                        </div>
+                        <div class="shipping">
+                            <span>Shipping:</span>
+                            <span id="shipping">Calculated at checkout</span>
+                        </div>
+                        <div class="total">
+                            <span>Total:</span>
+                            <span id="final-total">Rs 0.00</span>
+                        </div>
+                    </div>
+                    
+                    <div class="terms-checkbox">
+                        <input type="checkbox" id="terms">
+                        <label for="terms">I agree with the terms and conditions</label>
+                    </div>
+                    
+                    <button class="checkout-btn" id="checkout-btn">Proceed to Checkout</button>
+                    
+                    <p class="shipping-note">Taxes and shipping calculated at checkout</p>
+                </div>
+            </div>
+        </div>
+    </body>
+    </html>
+
+
+
+
+    <script>
+        class CartManager {
+            constructor() {
+                this.cart = JSON.parse(localStorage.getItem('cart')) || [];
+                this.init();
+            }
+    
+            init() {
+                this.renderCart();
+                this.updateTotals();
+                this.attachEventListeners();
+            }
+    
+            renderCart() {
+                const cartContainer = document.querySelector('.cart-items');
+                if (!cartContainer) return;
+    
+                if (this.cart.length === 0) {
+                    cartContainer.innerHTML = this.getEmptyCartHTML();
+                    return;
+                }
+    
+                cartContainer.innerHTML = this.cart.map(item => this.getCartItemHTML(item)).join('') + 
+                                        '<a href="index.html" class="continue-shopping">← Continue shopping</a>';
+            }
+    
+            getEmptyCartHTML() {
+                return `
+                    <div class="empty-cart">
+                        <p>Your cart is empty</p>
+                        <a href="product.html" class="continue-shopping">← Continue shopping</a>
+                    </div>
+                `;
+            }
+    
+            getCartItemHTML(item) {
+                return `
+                    <div class="cart-item" data-id="${item.id}">
+                        <div class="item-image">
+                            <img src="${item.image}" alt="${item.name}">
+                        </div>
+                        <div class="item-details">
+                            <h3 class="item-name">${item.name}</h3>
+                            <p class="item-variant">Color: ${item.color}</p>
+                            <p class="item-variant">Size: ${item.size}</p>
+                            <p class="item-price">Rs ${item.price.toFixed(2)}</p>
+                        </div>
+                        <div class="item-controls">
+                            <div class="quantity-controls">
+                                <button class="quantity-btn minus" data-id="${item.id}">-</button>
+                                <span class="quantity">${item.quantity}</span>
+                                <button class="quantity-btn plus" data-id="${item.id}">+</button>
+                            </div>
+                            <button class="remove-btn" data-id="${item.id}">Remove</button>
+                        </div>
+                        <div class="item-total">
+                            Rs ${(item.price * item.quantity).toFixed(2)}
+                        </div>
+                    </div>
+                `;
+            }
+    
+            attachEventListeners() {
+                document.addEventListener('click', (e) => {
+                    const target = e.target;
+                    
+                    if (target.classList.contains('minus')) {
+                        this.updateQuantity(target.dataset.id, -1);
+                    }
+                    else if (target.classList.contains('plus')) {
+                        this.updateQuantity(target.dataset.id, 1);
+                    }
+                    else if (target.classList.contains('remove-btn')) {
+                        this.removeItem(target.dataset.id);
+                    }
+                    else if (target.id === 'checkout-btn') {
+                        this.processCheckout();
+                    }
+                });
+            }
+    
+            updateQuantity(itemId, change) {
+                const itemIndex = this.cart.findIndex(item => item.id === itemId);
+                if (itemIndex === -1) return;
+    
+                const newQuantity = this.cart[itemIndex].quantity + change;
+                if (newQuantity < 1) return;
+    
+                this.cart[itemIndex].quantity = newQuantity;
+                this.saveCart();
+                this.renderCart();
+                this.updateTotals();
+            }
+    
+            removeItem(itemId) {
+                if (!confirm('Are you sure you want to remove this item?')) return;
+    
+                this.cart = this.cart.filter(item => item.id !== itemId);
+                this.saveCart();
+                this.renderCart();
+                this.updateTotals();
+            }
+    
+            updateTotals() {
+                const subtotal = this.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                const subtotalElement = document.getElementById('subtotal');
+                const finalTotalElement = document.getElementById('final-total');
+                
+                if (subtotalElement) subtotalElement.textContent = `Rs ${subtotal.toFixed(2)}`;
+                if (finalTotalElement) finalTotalElement.textContent = `Rs ${subtotal.toFixed(2)}`;
+            }
+    
+            saveCart() {
+                localStorage.setItem('cart', JSON.stringify(this.cart));
+            }
+    
+            processCheckout() {
+                if (this.cart.length === 0) {
+                    alert('Your cart is empty');
+                    return;
+                }
+    
+                const termsCheckbox = document.getElementById('terms');
+                if (!termsCheckbox || !termsCheckbox.checked) {
+                    alert('Please agree to the terms and conditions');
+                    return;
+                }
+    
+                const specialInstructions = document.querySelector('.special-instructions');
+                const checkoutData = {
+                    items: this.cart,
+                    total: parseFloat(document.getElementById('final-total').textContent.replace(/[^0-9.]/g, '')),
+                    specialInstructions: specialInstructions ? specialInstructions.value : ''
+                };
+    
+                localStorage.setItem('checkoutData', JSON.stringify(checkoutData));
+                window.location.href = 'checkout.html';
+            }
+        }
+    
+        // Initialize cart on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('Initializing cart manager');
+            const cartManager = new CartManager();
+        });
+        </script>
+
+        <script>
+
+            // Get all "Add to Cart" buttons
+const addToCartButtons = document.querySelectorAll('.btn-warning');
+let cartCount = 0;
+
+// Get the wishlist link element
+const wishlistLink = document.querySelector('a[href="#"].px-3.border-right.text-dark');
+
+// Update wishlist link href to point to cart.html
+if (wishlistLink) {
+    wishlistLink.href = 'cart.html';
+}
+
+// Function to update wishlist count in header
+function updateWishlistCount(count) {
+    const wishlistElement = document.querySelector('a[href="cart.html"].px-3.border-right.text-dark');
+    if (wishlistElement) {
+        wishlistElement.textContent = `Whishlist (${count})`;
+    }
+}
+
+// Function to update cart count in header
+function updateCartCount(count) {
+    const cartCountElement = document.querySelector('.rounded-pill.text-dark.bg-light');
+    if (cartCountElement) {
+        cartCountElement.textContent = count;
+    }
+}
+
+// Function to handle adding items to cart
+function addToCart(event) {
+    event.preventDefault();
+    
+    // Get product information
+    const productElement = event.target.closest('.product');
+    if (!productElement) return;
+    
+    const productName = productElement.querySelector('h6')?.textContent || 'Unknown Product';
+    const productPrice = productElement.querySelector('.price span')?.textContent || '0';
+    const productImage = productElement.querySelector('img')?.src || '';
+    
+    try {
+        // Create cart item object
+        const cartItem = {
+            id: Date.now().toString(), // Unique ID for the item
+            name: productName,
+            price: parseFloat(productPrice.replace(/[^0-9.-]+/g, '')),
+            image: productImage,
+            quantity: 1,
+            color: 'Default', // You can modify these default values
+            size: 'One Size'  // as needed
+        };
+        
+        // Get existing cart items from localStorage
+        const existingCart = JSON.parse(localStorage.getItem('cart')) || [];
+        
+        // Add new item to cart
+        existingCart.push(cartItem);
+        
+        // Save updated cart to localStorage
+        localStorage.setItem('cart', JSON.stringify(existingCart));
+        
+        // Increment counts
+        cartCount++;
+        
+        // Update UI
+        updateWishlistCount(cartCount);
+        updateCartCount(cartCount);
+        
+        // Show success message
+        const button = event.target;
+        const originalText = button.textContent;
+        button.textContent = 'Added!';
+        button.disabled = true;
+        
+        // Reset button after 1 second
+        setTimeout(() => {
+            button.textContent = originalText;
+            button.disabled = false;
+        }, 1000);
+        
+        // Optional: Log to console for debugging
+        console.log(`Added to cart: ${productName} - ${productPrice}`);
+        
+    } catch (error) {
+        console.error('Error adding item to cart:', error);
+        alert('Sorry, there was an error adding this item to your cart.');
+    }
+}
+
+// Add click event listeners to all "Add to Cart" buttons
+addToCartButtons.forEach(button => {
+    button.addEventListener('click', addToCart);
+});
+
+// Initialize cart count from localStorage
+function initializeCartCount() {
+    const existingCart = JSON.parse(localStorage.getItem('cart')) || [];
+    cartCount = existingCart.length;
+    updateWishlistCount(cartCount);
+    updateCartCount(cartCount);
+}
+
+// Initialize counts when page loads
+document.addEventListener('DOMContentLoaded', initializeCartCount);
+        </script>
+    
+        <!-- Required JavaScript -->
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js"></script>
+    </body>
+    </html>
+
+
+
+
+
+
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <!-- Owl Carousel Js file -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha256-pTxD+DSzIwmwhOqTFN+DB+nHjO4iAsbgfyFq5K5bcE0=" crossorigin="anonymous"></script>
+
+    <!--  isotope plugin cdn  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+
+    <!-- Custom Javascript -->
+    <script src="index.js"></script>
+</body>
+</html>

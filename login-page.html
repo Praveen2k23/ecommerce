@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Shopee - Login</title>
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous"
+    />
+    <style>
+        body {
+            font-family: "Poppins", sans-serif;
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #0e2941 0%, #1a4a80 100%);
+        }
+        .form-container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+        .form-container h2 {
+            margin-bottom: 20px;
+            color: #234666;
+        }
+        .form-container input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .form-container button {
+            background: #234666;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .form-container button:hover {
+            background: #0e2941;
+        }
+        .form-container .message {
+            margin-top: 15px;
+        }
+        .form-container .message a {
+            color: #234666;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <form id="login-form" action="http://localhost:3000/login" method="POST">
+            <h2>Login</h2>
+            <input type="text" name="username" placeholder="Username" required />
+            <input type="password" name="password" placeholder="Password" required />
+            <button type="submit">Login</button>
+            <p class="message">
+                Not registered? 
+                <a href="#" onclick="toggleForms('register'); return false;">Create an account</a>
+            </p>
+        </form>
+
+        <form id="register-form" action="http://localhost:3000/register" method="POST" style="display: none;">
+            <h2>Register</h2>
+            <input type="text" name="fullName" placeholder="Full Name" required />
+            <input type="text" name="username" placeholder="Username" required />
+            <input type="email" name="email" placeholder="Email" required />
+            <input type="password" name="password" placeholder="Password" required />
+            <button type="submit">Register</button>
+            <p class="message">
+                Already registered? 
+                <a href="#" onclick="toggleForms('login'); return false;">Sign In</a>
+            </p>
+        </form>
+    </div>
+
+    <script>
+        function toggleForms(formType) {
+            const loginForm = document.getElementById("login-form");
+            const registerForm = document.getElementById("register-form");
+            
+            if (formType === "register") {
+                loginForm.style.display = "none";
+                registerForm.style.display = "block";
+            } else {
+                loginForm.style.display = "block";
+                registerForm.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  <!-- Bootstrap CDN -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha256-UhQQ4fxEeABh4JrcmAJ1+16id/1dnlOEVCFOxDef9Lw=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha256-kksNxjDRxd/5+jGurZUJd1sdR2v+ClrCl3svESBaJqw=" crossorigin="anonymous" />
+
+  <!-- font awesome icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
+
+  <!-- Custom CSS file -->
+    <link rel="stylesheet" href="style.css">
+
+  
+</head>
+<body>
+
+  <!---Header---->
+  <header id="header"></header>
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          fetch("header.html")
+              .then(response => response.text())
+              .then(data => {
+                  document.getElementById("header").innerHTML = data;
+              })
+              .catch(error => console.error('Error loading the header:', error));
+      });
+  </script>
+  
+
+
+<main id="main-site">
+
+  <!----banner--->
+    <section id="banner-area">
+      <div class="owl-carousel owl-theme">
+          <div class="item">
+            <img src="assets/Banner1.jpg" alt="Banner1">
+          </div>
+          <div class="item">
+            <img src="assets/Banner2.jpg" alt="Banner2">
+          </div>
+          <div class="item">
+            <img src="assets/Banner3.jpg" alt="Banner3">
+          </div>
+      </div>
+    </section>
+
+
+
+  <main>
+    <!-- Top Sale-->
+    <section id="top-sale">
+      <div class="container py-5">
+        <h4 class="font-rubik font-size-20">Top Sale</h4>
+        <hr>
+          <div class="owl-carousel owl-theme">
+            <div class="item py-2">
+              <div class="product font-rale">
+                <a href="product.html#apple_se_section"><img src="assets/products/Apple-Watch-SE.webp" alt="product1" class="img-fluid"></a>
+                <div class="text-center">
+                  <h6>Apple Watch SE 2</h6>
+                  <div class="rating text-warning font-size-12">
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="far fa-star"></i></span>
+                  </div>
+                  <div class="price py-2">
+                    <span>Rs 125,000</span>
+                  </div>
+                  <button type="submit" class="btn btn-warning font-size-12" id="addToCartBtn">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+            <div class="item py-2">
+              <div class="product font-rale">
+                <a href="product.html#Haylou_Solar_plus"><img src="assets/products/Haylou-Solar-plus.webp" alt="product1" class="img-fluid"></a>
+                <div class="text-center">
+                  <h6>Haylou Solar Plus (RT3)</h6>
+                  <div class="rating text-warning font-size-12">
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="far fa-star"></i></span>
+                  </div>
+                  <div class="price py-2">
+                    <span>Rs 25,000</span>
+                  </div>
+                  <button type="submit" class="btn btn-warning font-size-12">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+            <div class="item py-2">
+              <div class="product font-rale">
+                <a href="product.html#Samsung_watch_6"><img src="assets/products/Samsung-Galaxy-Watch-6.webp" alt="product1" class="img-fluid"></a>
+                <div class="text-center">
+                  <h6>Samsung Galaxy Watch 6</h6>
+                  <div class="rating text-warning font-size-12">
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="far fa-star"></i></span>
+                  </div>
+                  <div class="price py-2">
+                    <span>Rs 167,000</span>
+                  </div>
+                  <button type="submit" class="btn btn-warning font-size-12">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+            <div class="item py-2">
+              <div class="product font-rale">
+                <a href="product.html#Amazfit-GTR-3-Pro"><img src="assets/products/Amazfit-GTR-3-Pro.webp" alt="product1" class="img-fluid"></a>
+                <div class="text-center">
+                  <h6>Amazfit GTR 3 Pro</h6>
+                  <div class="rating text-warning font-size-12">
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="far fa-star"></i></span>
+                  </div>
+                  <div class="price py-2">
+                    <span>Rs 57,000</span>
+                  </div>
+                  <button type="submit" class="btn btn-warning font-size-12">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+            <div class="item py-2">
+              <div class="product font-rale">
+                <div class="d-flex flex-column">
+                  <a href="product.html#OnePlus Watch 2R"><img src="assets/products/OnePlus-2r-1.webp" class="img-fluid" alt="pro1"></a>
+                  <div class="text-center">
+                    <h6>OnePlus Watch 2R</h6>
+                    <div class="rating text-warning font-size-12">
+                      <span><i class="fas fa-star"></i></span>
+                      <span><i class="fas fa-star"></i></span>
+                      <span><i class="fas fa-star"></i></span>
+                      <span><i class="fas fa-star"></i></span>
+                      <span><i class="far fa-star"></i></span>
+                    </div>
+                    <div class="price py-2">
+                      <span>Rs 120,000</span>
+                    </div>
+                    <button type="submit" class="btn btn-warning font-size-12">Add to Cart</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="item py-2">
+              <div class="product font-rale">
+                <div class="d-flex flex-column">
+                  <a href="product.html#Haylou Solar Neo"><img src="assets/products/Haylou-Solar-Neo.webp" class="img-fluid" alt="pro1"></a>
+                  <div class="text-center">
+                    <h6>Haylou Solar Neo Calling</h6>
+                    <div class="rating text-warning font-size-12">
+                      <span><i class="fas fa-star"></i></span>
+                      <span><i class="fas fa-star"></i></span>
+                      <span><i class="fas fa-star"></i></span>
+                      <span><i class="fas fa-star"></i></span>
+                      <span><i class="far fa-star"></i></span>
+                    </div>
+                    <div class="price py-2">
+                      <span>RS 80,000</span>
+                    </div>
+                    <button type="submit" class="btn btn-warning font-size-12">Add to Cart</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </section>
+
+
+  <!---Special Price --->
+  <section id="special-price">
+    <div class="container">
+      <h4 class="font-rubik font-size-20">Special Price</h4>
+      <div id="filters" class="button-group text-right font-baloo font-size-16">
+        <button class="btn is-checked" data-filter="*">All Brand</button>
+        <button class="btn" data-filter=".Apple">Apple</button>
+        <button class="btn" data-filter=".Samsung">Samsung</button>
+        <button class="btn" data-filter=".Haylou">Haylou</button>
+        <button class="btn" data-filter=".Amazfit">Amazfit</button>
+        <button class="btn" data-filter=".OnePlus">OnePlus</button>
+      </div>
+      <div class="grid">
+        <div class="grid-item Apple border">
+         <div class="item py-2" style="width: 200px;">
+          <div class="product font-rale">
+            <a href="product.html#apple_se_section"><img src="assets/products/Apple-Watch-SE.webp" alt="product1" class="img-fluid"></a>
+            <div class="text-center">
+              <h6>Apple Watch SE 2</h6>
+              <div class="rating text-warning font-size-12">
+                <span><i class="fas fa-star"></i></span>
+                <span><i class="fas fa-star"></i></span>
+                <span><i class="fas fa-star"></i></span>
+                <span><i class="fas fa-star"></i></span>
+                <span><i class="far fa-star"></i></span>
+              </div>
+              <div class="price py-2">
+                <span>Rs 100,000</span>
+              </div>
+              <button type="submit" class="btn btn-warning font-size-12">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+        </div>
+        <div class="grid-item Samsung border">
+          <div class="item py-2" style="width: 200px;">
+           <div class="product font-rale">
+             <a href="product.html#Samsung Galaxy Watch 7"><img src="assets/products/Samsung-Galaxy-Watch-7.webp" alt="product1" class="img-fluid"></a>
+             <div class="text-center">
+               <h6>Samsung Galaxy Watch 7</h6>
+               <div class="rating text-warning font-size-12">
+                 <span><i class="fas fa-star"></i></span>
+                 <span><i class="fas fa-star"></i></span>
+                 <span><i class="fas fa-star"></i></span>
+                 <span><i class="fas fa-star"></i></span>
+                 <span><i class="far fa-star"></i></span>
+               </div>
+               <div class="price py-2">
+                 <span>Rs 125,000</span>
+               </div>
+               <button type="submit" class="btn btn-warning font-size-12">Add to Cart</button>
+             </div>
+           </div>
+         </div>
+         </div>
+         <div class="grid-item Haylou border">
+          <div class="item py-2" style="width: 200px;">
+           <div class="product font-rale">
+             <a href="product.html#Haylou_Solar_plus"><img src="assets/products/Haylou-Solar-plus.webp" alt="product1" class="img-fluid"></a>
+             <div class="text-center">
+               <h6>Haylou Solar Plus (RT3)</h6>
+               <div class="rating text-warning font-size-12">
+                 <span><i class="fas fa-star"></i></span>
+                 <span><i class="fas fa-star"></i></span>
+                 <span><i class="fas fa-star"></i></span>
+                 <span><i class="fas fa-star"></i></span>
+                 <span><i class="far fa-star"></i></span>
+               </div>
+               <div class="price py-2">
+                 <span>Rs 45,000</span>
+               </div>
+               <button type="submit" class="btn btn-warning font-size-12">Add to Cart</button>
+             </div>
+           </div>
+         </div>
+         </div>
+         <div class="grid-item Amazfit border">
+          <div class="item py-2" style="width: 200px;">
+           <div class="product font-rale">
+             <a href="product.html#Amazfit Cheetah Pro"><img src="assets/products/AmazfitCheetahPro.webp" alt="product1" class="img-fluid"></a>
+             <div class="text-center">
+               <h6>Amazfit Cheetah Pro</h6>
+               <div class="rating text-warning font-size-12">
+                 <span><i class="fas fa-star"></i></span>
+                 <span><i class="fas fa-star"></i></span>
+                 <span><i class="fas fa-star"></i></span>
+                 <span><i class="fas fa-star"></i></span>
+                 <span><i class="far fa-star"></i></span>
+               </div>
+               <div class="price py-2">
+                 <span>Rs 65,000</span>
+               </div>
+               <button type="submit" class="btn btn-warning font-size-12">Add to Cart</button>
+             </div>
+           </div>
+         </div>
+         </div>
+         <div class="grid-item Samsung border">
+          <div class="item py-2" style="width: 200px;">
+           <div class="product font-rale">
+             <a href="product.html#Samsung Galaxy Fit 3"><img src="assets/products/Samsung-Galaxy-fit-3.webp" alt="product1" class="img-fluid"></a>
+             <div class="text-center">
+               <h6>Samsung Galaxy Fit 3</h6>
+               <div class="rating text-warning font-size-12">
+                 <span><i class="fas fa-star"></i></span>
+                 <span><i class="fas fa-star"></i></span>
+                 <span><i class="fas fa-star"></i></span>
+                 <span><i class="fas fa-star"></i></span>
+                 <span><i class="far fa-star"></i></span>
+               </div>
+               <div class="price py-2">
+                 <span>Rs 65,000</span>
+               </div>
+               <button type="submit" class="btn btn-warning font-size-12">Add to Cart</button>
+             </div>
+           </div>
+         </div>
+         </div>
+         <div class="grid-item  Haylou border ">
+          <div class="item py-2" style="width: 200px;">
+            <div class="product font-rale">
+              <div class="d-flex flex-column">
+                <a href="product.html#Haylou Solar Neo"><img src="assets/products/Haylou-Solar-Neo.webp" class="img-fluid" alt="pro1"></a>
+                <div class="text-center">
+                  <h6>Haylou Solar Neo Calling</h6>
+                  <div class="rating text-warning font-size-12">
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="far fa-star"></i></span>
+                  </div>
+                  <div class="price py-2">
+                    <span>RS 50,000</span>
+                  </div>
+                  <button type="submit" class="btn btn-warning font-size-12">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="grid-item  Amazfit border ">
+          <div class="item py-2" style="width: 200px;">
+            <div class="product font-rale">
+              <div class="d-flex flex-column">
+                <a href="product.html#Amazfit GTS 2"><img src="assets/products/Amazfit GTS 2.webp" class="img-fluid" alt="pro1"></a>
+                <div class="text-center">
+                  <h6>Amazfit GTS 2</h6>
+                  <div class="rating text-warning font-size-12">
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="far fa-star"></i></span>
+                  </div>
+                  <div class="price py-2">
+                    <span>RS 75,000</span>
+                  </div>
+                  <button type="submit" class="btn btn-warning font-size-12">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="grid-item  Samsung border ">
+          <div class="item py-2" style="width: 200px;">
+            <div class="product font-rale">
+              <div class="d-flex flex-column">
+                <a href="product.html#Samsung_watch_6"><img src="assets/products/Samsung-Galaxy-Watch-6.webp" class="img-fluid" alt="pro1"></a>
+                <div class="text-center">
+                  <h6>Samsung Galaxy Watch 6</h6>
+                  <div class="rating text-warning font-size-12">
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="far fa-star"></i></span>
+                  </div>
+                  <div class="price py-2">
+                    <span>Rs 167,000</span>
+                  </div>
+                  <button type="submit" class="btn btn-warning font-size-12">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="grid-item  OnePlus border">
+          <div class="item py-2" style="width: 200px;">
+            <div class="product font-rale">
+              <div class="d-flex flex-column">
+                <a href="product.html#OnePlus Watch 2R"><img src="assets/products/OnePlus-2r-1.webp" class="img-fluid" alt="pro1"></a>
+                <div class="text-center">
+                  <h6>OnePlus Watch 2R</h6>
+                  <div class="rating text-warning font-size-12">
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="far fa-star"></i></span>
+                  </div>
+                  <div class="price py-2">
+                    <span>Rs 120,000</span>
+                  </div>
+                  <button type="submit" class="btn btn-warning font-size-12">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="grid-item Apple border" >
+          <div class="item py-2" style="width: 200px;">
+            <div class="product font-rale">
+              <div class="d-flex flex-column">
+                <a href="product.html#Apple Watch Series 8"><img src="assets/products/Apple Watch Series 8.webp" class="img-fluid" alt="pro1"></a>
+                <div class="text-center">
+                  <h6>Apple Watch Series 8</h6>
+                  <div class="rating text-warning font-size-12">
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="far fa-star"></i></span>
+                  </div>
+                  <div class="price py-2">
+                    <span>Rs 120,000</span>
+                  </div>
+                  <button type="submit" class="btn btn-warning font-size-12">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <br><br><br>
+
+
+<!--- New Phones-->
+  <section id="new-phones">
+    <div class="container">
+      <h4 class="font-rubik font-size-20">New Smart Watches</h4>
+      <hr>
+      <div class="owl-carousel owl-theme">
+        <div class="item py-2 bg-light">
+          <div class="product font-rale">
+            <a href="product.html#Haylou Watch R8 Sport"><img src="assets/products/haylou-watch-r8.webp" alt="product1" class="img-fluid"></a>
+            <div class="text-center">
+              <h6>Haylou Watch R8 Sport</h6>
+              <div class="rating text-warning font-size-12">
+                <span><i class="fas fa-star"></i></span>
+                <span><i class="fas fa-star"></i></span>
+                <span><i class="fas fa-star"></i></span>
+                <span><i class="fas fa-star"></i></span>
+                <span><i class="far fa-star"></i></span>
+              </div>
+              <div class="price py-2">
+                <span>RS 75,000</span>
+              </div>
+              <button type="submit" class="btn btn-warning font-size-12">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+        <div class="item py-2 bg-light">
+          <div class="product font-rale">
+            <a href="product.html#Amazfit GTR Mini"><img src="assets/products/AmazfitGTRMiniSmartwatch.webp" alt="product1" class="img-fluid"></a>
+            <div class="text-center">
+              <h6>Amazfit GTR Mini</h6>
+              <div class="rating text-warning font-size-12">
+                <span><i class="fas fa-star"></i></span>
+                <span><i class="fas fa-star"></i></span>
+                <span><i class="fas fa-star"></i></span>
+                <span><i class="fas fa-star"></i></span>
+                <span><i class="far fa-star"></i></span>
+              </div>
+              <div class="price py-2">
+                <span>Rs 35,000</span>
+              </div>
+              <button type="submit" class="btn btn-warning font-size-12">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+        <div class="item py-2 bg-light">
+          <div class="product font-rale">
+            <a href="product.html#Haylou RT2"><img src="assets/products/Haylou-LS10-RT2.webp" alt="product1" class="img-fluid"></a>
+            <div class="text-center">
+              <h6>Haylou RT2</h6>
+              <div class="rating text-warning font-size-12">
+                <span><i class="fas fa-star"></i></span>
+                <span><i class="fas fa-star"></i></span>
+                <span><i class="fas fa-star"></i></span>
+                <span><i class="fas fa-star"></i></span>
+                <span><i class="far fa-star"></i></span>
+              </div>
+              <div class="price py-2">
+                <span>Rs 45,000</span>
+              </div>
+              <button type="submit" class="btn btn-warning font-size-12">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+        <div class="item py-2 bg-light">
+          <div class="product font-rale">
+            <a href="product.html#Amazfit GTR 4"><img src="assets/products/AmazfitGtr4.webp" alt="product1" class="img-fluid"></a>
+            <div class="text-center">
+              <h6>Amazfit GTR 4</h6>
+              <div class="rating text-warning font-size-12">
+                <span><i class="fas fa-star"></i></span>
+                <span><i class="fas fa-star"></i></span>
+                <span><i class="fas fa-star"></i></span>
+                <span><i class="fas fa-star"></i></span>
+                <span><i class="far fa-star"></i></span>
+              </div>
+              <div class="price py-2">
+                <span>RS 85,000</span>
+              </div>
+              <button type="submit" class="btn btn-warning font-size-12">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+        <div class="item py-2 bg-light">
+          <div class="product font-rale">
+            <a href="product.html#Amazfit GTR 3 Pro Limited"><img src="assets/products/Amazfit-GTR-3-Pro-Limited-Edition.webp" alt="product1" class="img-fluid"></a>
+            <div class="text-center">
+              <h6>Amazfit GTR 3 Pro Limited</h6>
+              <div class="rating text-warning font-size-12">
+                <span><i class="fas fa-star"></i></span>
+                <span><i class="fas fa-star"></i></span>
+                <span><i class="fas fa-star"></i></span>
+                <span><i class="fas fa-star"></i></span>
+                <span><i class="far fa-star"></i></span>
+              </div>
+              <div class="price py-2">
+                <span>Rs 65,000</span>
+              </div>
+              <button type="submit" class="btn btn-warning font-size-12">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+        <div class="item py-2 bg-light">
+          <div class="product font-rale">
+            <div class="d-flex flex-column">
+              <a href="product.html#Haylou Solar Lite Smart"><img src="assets/products/haylou-solar-lite.webp" class="img-fluid" alt="pro1"></a>
+              <div class="text-center">
+                <h6>Haylou Solar Lite </h6>
+                <div class="rating text-warning font-size-12">
+                  <span><i class="fas fa-star"></i></span>
+                  <span><i class="fas fa-star"></i></span>
+                  <span><i class="fas fa-star"></i></span>
+                  <span><i class="fas fa-star"></i></span>
+                  <span><i class="far fa-star"></i></span>
+                </div>
+                <div class="price py-2">
+                  <span>Rs 43,500</span>
+                </div>
+                <button type="submit" class="btn btn-warning font-size-12">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="item py-2 bg-light">
+          <div class="product font-rale">
+            <div class="d-flex flex-column">
+              <a href="product.html#Samsung Galaxy Watch FE"><img src="assets/products/Samsung-Galaxy-Watch-FE.webp" class="img-fluid" alt="pro1"></a>
+              <div class="text-center">
+                <h6>Samsung Galaxy Watch FE</h6>
+                <div class="rating text-warning font-size-12">
+                  <span><i class="fas fa-star"></i></span>
+                  <span><i class="fas fa-star"></i></span>
+                  <span><i class="fas fa-star"></i></span>
+                  <span><i class="fas fa-star"></i></span>
+                  <span><i class="far fa-star"></i></span>
+                </div>
+                <div class="price py-2">
+                  <span>Rs 73,000</span>
+                </div>
+                <button type="submit" class="btn btn-warning font-size-12">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  </main>
+
+
+  <!--Footer Section -->
+<footer id="footer"></footer>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+      fetch("footer.html")
+          .then(response => response.text())
+          .then(data => {
+              document.getElementById("footer").innerHTML = data;
+          })
+          .catch(error => console.error('Error loading the footer:', error));
+  });
+</script>
+
+
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+  <!-- Js file -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha256-pTxD+DSzIwmwhOqTFN+DB+nHjO4iAsbgfyFq5K5bcE0=" crossorigin="anonymous"></script>
+
+  <!--  isotope plugin cdn  -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+
+  <!-- Custom Javascript -->
+  <script src="index.js"></script>
+
+
+  <script>
+
+    // Get all "Add to Cart" buttons
+const addToCartButtons = document.querySelectorAll('.btn-warning');
+let cartCount = 0;
+
+// Function to update wishlist count in header
+function updateWishlistCount(count) {
+    const wishlistElement = document.querySelector('a[href="#"].px-3.border-right.text-dark');
+    if (wishlistElement) {
+        wishlistElement.textContent = `Whishlist (${count})`;
+    }
+}
+
+// Function to update cart count in header
+function updateCartCount(count) {
+    const cartCountElement = document.querySelector('.rounded-pill.text-dark.bg-light');
+    if (cartCountElement) {
+        cartCountElement.textContent = count;
+    }
+}
+
+// Function to handle adding items to cart
+function addToCart(event) {
+    event.preventDefault();
+    
+    // Get product information
+    const productElement = event.target.closest('.product');
+    if (!productElement) return;
+    
+    const productName = productElement.querySelector('h6')?.textContent || 'Unknown Product';
+    const productPrice = productElement.querySelector('.price span')?.textContent || '0';
+    
+    try {
+        // Increment counts
+        cartCount++;
+        
+        // Update UI
+        updateWishlistCount(cartCount);
+        updateCartCount(cartCount);
+        
+        // Show success message
+        const button = event.target;
+        const originalText = button.textContent;
+        button.textContent = 'Added!';
+        button.disabled = true;
+        
+        // Reset button after 1 second
+        setTimeout(() => {
+            button.textContent = originalText;
+            button.disabled = false;
+        }, 1000);
+        
+        // Optional: Log to console for debugging
+        console.log(`Added to cart: ${productName} - ${productPrice}`);
+        
+    } catch (error) {
+        console.error('Error adding item to cart:', error);
+        alert('Sorry, there was an error adding this item to your cart.');
+    }
+}
+
+// Add click event listeners to all "Add to Cart" buttons
+addToCartButtons.forEach(button => {
+    button.addEventListener('click', addToCart);
+});
+
+// Initialize counts
+updateWishlistCount(0);
+updateCartCount(0);
+  </script>
+</body>
+</html>
